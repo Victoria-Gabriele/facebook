@@ -7,21 +7,40 @@
     <title>Facebook</title>
 </head>
 <body>
+     
+<div class="status-box">
      <h1>Facebook</h1>
 
-     <div class="tudo">
+     <div class="user-profile">
+
+   
         <img class="logo" src="imagem/f429bcce31815f4e85e2db44b21b125b.jpg" width="100px">
-     <input type="text" placeholder="No que você está pensando ?">
-     <div class="icons">
-        <img src="imagem/camerarosa-removebg-preview.png" width="50" class="video">
-        <p>Video ao Vivo</p>
-        <img  src="imagem/fotos-removebg-preview.png" width="50" class="foto">
-        <p>Foto/video</p>
-        <img  src="imagem/sentimento-removebg-preview.png" width="50" class="sentimento">
-        <p>Sentimento/atividade</p>
+     <input id="postContent"placeholder="No que você está pensando ?"></input>
      </div>
-     <button id="publicar">Publicar</button>
-     </Div>
+<div class="options">
+     <div class="option">
+        <img src="imagem/camerarosa-removebg-preview.png" class="option-icon">
+        <p>Video ao Vivo</p>
+      </div>
+
+      <div class="option" onclick="document.getElementById('postImage').click();">
+         <img  src="imagem/fotos-removebg-preview.png" width="25" class="foto" class="option-icon">
+         <p>Foto/video</p>
+         <input type="file" id="postImage" accept="image/*" style="display:none;" onchange="atualizarimagem()">
+      </div>
+
+      <div id="imagePreview" class="image-preview"></div>
+        <div class="option">
+        <img  src="imagem/sentimento-removebg-preview.png" class="option-icon">
+        <p>Sentimento/atividade</p>
+        </div>
+      </div>
+        <button onclick="post()">Publicar</button>
+        <div id="feed"></div>
+     </div>
+     </div>
+     
+     <script src="js.js" ></script>
 
 </body>
 </html>
