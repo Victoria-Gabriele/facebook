@@ -52,6 +52,37 @@ function post() {
     };
     postElement.appendChild(deleteButton); // Adiciona o botão à postagem
 
+
+    //Barra de reações
+    const reações = document.createElement('div');
+    reações.className = 'reações';
+    reações.innerHTML = `
+     <span class= "reaction like" data-reaction="Curtir">&#128077</span>
+     <span class= "reaction love" data-reaction="Amei">&#128420</span>
+     <span class= "reaction haha" data-reaction="Haha">&#128513</span>
+     <span class= "reaction wow" data-reaction="Uau">&#128558</span>
+     <span class= "reaction sad" data-reaction="Triste">&#128546</span>
+     <span class= "reaction angry" data-reaction="Grr">&#128548</span>
+    `;
+    postElement.appendChild(reações); // adc barra
+
+    //adc espaço para exibir a reação
+    const selectedReaction = document.createElement('div');
+    selectedReaction.className = 'selected-reaction';
+    selectedReaction.innerText = 'Selecione uma reação!';
+    postElement.appendChild(selectedReaction);
+
+    //adc funcionalidade
+    const reactions = reações.querySelectorAll('.reaction');
+    reactions.forEach(reaction => {
+        reaction.addEventListener('click', function(){
+        reactions.forEach(r => r.classList.remove('Selected'));//remove
+        this.classList.add('selected');//destaca
+        const reactionName = this.getAttribute('data-reaction');
+        selectedReaction.innerText = `Você reagiu com: ${reactionName};`
+        });
+    });
+
     // Adiciona a nova postagem no topo do feed
     feed.prepend(postElement);
     // Limpa os campos de entrada após a postagem
